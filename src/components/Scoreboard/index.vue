@@ -65,7 +65,7 @@ export default {
             targets: ".pl-lion",
             keyframes: [
               { backgroundPositionY: "67px", duration: 0 },
-              { backgroundPositionY: "4px", duration: 300 },
+              { backgroundPositionY: "0px", duration: 300 },
             ],
             easing: "cubicBezier(0.000, 0.000, 0.000, 1.000)",
           },
