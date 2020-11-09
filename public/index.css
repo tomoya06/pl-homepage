@@ -1,4 +1,15 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
+}
+@font-face {
+  font-family: "type_dynamic_-_sailec_bold-webfont";
+  src: url("https://dixonbaxi.com/wp-content/themes/dixonbaxi-child/fonts/type_dynamic_-_sailec_bold-webfont.woff2")
+    format("woff2");
+}
+@font-face {
+  font-family: "type_dynamic_-_sailec-webfont";
+  src: url("https://dixonbaxi.com/wp-content/themes/dixonbaxi-child/fonts/type_dynamic_-_sailec-webfont.woff2")
+    format("woff2");
 }

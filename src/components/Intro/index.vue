@@ -1,5 +1,5 @@
 <template>
-  <div id="canvas-container">
+  <div id="intro-canvas" v-if="display">
     <div id="intro-container">
       <div id="intro-content">
         <div
@@ -113,7 +113,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-#canvas-container {
+#intro-canvas {
   height: 100vh;
   width: 100vw;
   display: flex;
