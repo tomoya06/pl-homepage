@@ -39,12 +39,17 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      display: true,
+    };
+  },
   mounted() {
     this.containerAnime();
   },
   methods: {
     containerAnime() {
-      this.anime
+      const animation = this.anime
         .timeline()
         .add(
           {
@@ -99,6 +104,10 @@ export default {
           },
           2800
         );
+      animation.finished.then(() => {
+        console.log("intro animation is finished");
+        this.display = false;
+      });
     },
   },
 };
@@ -107,11 +116,6 @@ export default {
 #canvas-container {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(
-    45deg,
-    rgba(61, 5, 65, 1) 0%,
-    rgba(175, 2, 80, 1) 100%
-  );
   display: flex;
   align-items: center;
   justify-content: center;
