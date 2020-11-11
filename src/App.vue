@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 <style lang="less" scoped>
@@ -9,4 +9,7 @@
   height: 100%;
   overflow: hidden;
 }
+</style>
+<style lang="less">
+@import "./styles/index.less";
 </style>

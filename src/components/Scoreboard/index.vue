@@ -1,12 +1,12 @@
 <template>
-  <div id="scoreboard-canvas">
+  <div id="scoreboard-canvas" class="pl-page-component layer-9">
     <div id="scoreboard-container">
       <div id="scoreboard-content">
         <div class="sb-logo sb-row">
           <div
             class="pl-lion"
             :style="{
-              backgroundImage: `url(${require('@/assets/pl-lion-white.png')})`,
+              backgroundImage: `url(${require('@/assets/img/pl-lion-white.png')})`,
               backgroundSize: 'cover',
               backgroundPositionX: 'center',
               backgroundRepeat: 'no-repeat',

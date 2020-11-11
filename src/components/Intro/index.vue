@@ -1,11 +1,11 @@
 <template>
-  <div id="intro-canvas" v-if="display">
+  <div id="intro-canvas" v-if="display" class="pl-page-component">
     <div id="intro-container">
       <div id="intro-content">
         <div
           class="pl-name"
           :style="{
-            backgroundImage: `url(${require('@/assets/pl-premier.png')})`,
+            backgroundImage: `url(${require('@/assets/img/pl-premier.png')})`,
             backgroundSize: 'cover',
             backgroundPosition: 'left',
             width: '149px',
@@ -15,7 +15,7 @@
         <div
           class="pl-logo"
           :style="{
-            backgroundImage: `url(${require('@/assets/pl-lion.png')})`,
+            backgroundImage: `url(${require('@/assets/img/pl-lion.png')})`,
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'top',
@@ -26,7 +26,7 @@
         <div
           class="pl-name"
           :style="{
-            backgroundImage: `url(${require('@/assets/pl-league.png')})`,
+            backgroundImage: `url(${require('@/assets/img/pl-league.png')})`,
             backgroundSize: 'cover',
             backgroundPosition: 'right',
             width: '149px',
@@ -114,8 +114,6 @@ export default {
 </script>
 <style lang="less" scoped>
 #intro-canvas {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,0 +1,27 @@
+.pl-page-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  .pl-page-component {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.layer(9);
+.layer(@n) when (@n < 10) {
+  .layer-@{n} {
+    z-index: @n;
+  }
+  .layer(@n+1);
+}
+
+.pl-pointer {
+  &-button {
+    cursor: pointer;
+  }
+}
