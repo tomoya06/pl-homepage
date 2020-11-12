@@ -1,8 +1,8 @@
 <template>
   <div id="homepage" class="pl-page-container">
-    <Intro v-if="false" />
+    <Intro v-show="false" />
     <Player v-if="showPlayer"/>
-    <Scoreboard v-if="false" />
+    <Scoreboard v-show="false" />
     <button @click="start" v-if="!showPlayer">PLAY!</button>
   </div>
 </template>

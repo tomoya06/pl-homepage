@@ -25,17 +25,7 @@
           </div>
         </div>
         <div class="sc-container">
-          <iframe
-            v-if="playing"
-            width="100%"
-            height="1"
-            scrolling="no"
-            frameborder="no"
-            allow="autoplay"
-            :src="playing.iframe"
-            ref="scPlayer"
-            @load="handleIframeLoaded"
-          ></iframe>
+          <div id="ytplayer" ref="scPlayer"></div>
         </div>
         <div class="player-list list-content">
           <div
@@ -69,45 +59,24 @@
   </div>
 </template>
 <script>
-const playerApi = require("@/service/player");
+import { mapState, mapActions } from "vuex";
 
 export default {
-  data() {
-    return {
-      playing: null,
-      playlist: [],
-    };
-  },
-  created() {
-    this.initPlaylist();
+  mounted() {
+    this.initPlayer(this.$refs.scPlayer).then(() => {
+      this.playlistAnimate();
+    });
   },
   methods: {
-    initPlaylist() {
-      console.log("sc iframe loaded");
-      playerApi.getPlaylist().then((data) => {
-        this.playlist = data;
-        this.playing = data[0];
-        this.playlist[0].isPlaying = true;
-
-        this.playlistAnimate();
-      });
-    },
-    handleIframeLoaded() {
-      this.updateIframeYoutubeStyle();
-      this.iframeAnimate();
-    },
+    ...mapActions({
+      initPlayer: "player/initPlayer",
+      changeSong: "player/changeSong",
+    }),
     handleClickPlay(song) {
       if (this.playing.id === song.id) {
         return;
       }
-      this.playlist.forEach((item) => {
-        if (item.id !== song.id) {
-          item.isPlaying = false;
-        } else {
-          item.isPlaying = true;
-        }
-      });
-      this.playing = song;
+      this.changeSong(song);
       // this.anime.timeline().add({
       //   targets: this.$refs.scPlayer,
       //   height: "0",
@@ -149,8 +118,14 @@ export default {
         1000
       );
     },
-    updateIframeYoutubeStyle() {
-    },
+    updateIframeYoutubeStyle() {},
+  },
+  computed: {
+    ...mapState({
+      playlist: (state) => state.player.playlist,
+      playing: (state) => state.player.playing,
+      status: (state) => state.player.status,
+    }),
   },
 };
 </script>
@@ -169,6 +144,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#ytplayer {
+  width: 100%;
+  height: 160px;
 }
 
 .pl-list {
@@ -201,10 +181,11 @@ export default {
       .subtitle {
         color: white;
         background: #3e003e;
+        font-family: "type_dynamic_-_sailec-webfont";
         margin: @rowMargin 0 0 0;
         height: @headerSubtitleHeight - @rowMargin;
         line-height: @headerSubtitleHeight - @rowMargin;
-        font-size: 24px;
+        font-size: 22px;
       }
     }
   }
