@@ -61,7 +61,7 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
-import Background from './BackgroundBoard.vue';
+import Background from '@/components/BackgroundBoard.vue';
 
 export default {
   mounted() {
@@ -79,12 +79,6 @@ export default {
         return;
       }
       this.changeSong(song);
-      // this.anime.timeline().add({
-      //   targets: this.$refs.scPlayer,
-      //   height: "0",
-      //   duration: 300,
-      //   easing: "easeOutSine",
-      // });
     },
     playlistAnimate() {
       this.anime

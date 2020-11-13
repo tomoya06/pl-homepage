@@ -3,24 +3,24 @@
     <loading-view v-show="currentPage === PAGES.LOADING" />
     <intro v-show="currentPage === PAGES.INTRO" />
     <player v-show="currentPage === PAGES.PLAYER" />
-    <scoreboard v-show="currentPage === PAGES.PLAYGROUND" />
+    <playground v-show="currentPage === PAGES.PLAYGROUND" />
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 
-import Intro from "../components/IntroBoard.vue";
-import Scoreboard from "../components/Scoreboard.vue";
-import Player from "../components/Player.vue";
-import LoadingView from "../components/LoadingView.vue";
+import Intro from "../pages/IntroBoard.vue";
+import Playground from "../pages/Playground.vue";
+import Player from "../pages/Player.vue";
+import LoadingView from "../pages/LoadingView.vue";
 
 import { PAGES } from "../store/pager";
 
 export default {
   components: {
     Intro,
-    Scoreboard,
+    Playground,
     Player,
     LoadingView,
   },

@@ -1,47 +1,47 @@
 <template>
-  <div id="intro-canvas" class="pl-page-component">
-    <div id="intro-container">
-      <div id="intro-content">
-        <div
-          class="pl-name"
-          :style="{
-            backgroundImage: `url(${require('@/assets/img/pl-premier.png')})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'left',
-            width: '149px',
-            height: '46px',
-          }"
-        ></div>
-        <div
-          class="pl-logo"
-          :style="{
-            backgroundImage: `url(${require('@/assets/img/pl-lion.png')})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'top',
-            width: '80px',
-            height: '90px',
-          }"
-        ></div>
-        <div
-          class="pl-name"
-          :style="{
-            backgroundImage: `url(${require('@/assets/img/pl-league.png')})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'right',
-            width: '149px',
-            height: '46px',
-          }"
-        ></div>
+  <transition name="intro" @after-enter="containerAnime">
+    <div id="intro-canvas" class="pl-page-component">
+      <div id="intro-container">
+        <div id="intro-content">
+          <div
+            class="pl-name"
+            :style="{
+              backgroundImage: `url(${require('@/assets/img/pl-premier.png')})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'left',
+              width: '149px',
+              height: '46px',
+            }"
+          ></div>
+          <div
+            class="pl-logo"
+            :style="{
+              backgroundImage: `url(${require('@/assets/img/pl-lion.png')})`,
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'top',
+              width: '80px',
+              height: '90px',
+            }"
+          ></div>
+          <div
+            class="pl-name"
+            :style="{
+              backgroundImage: `url(${require('@/assets/img/pl-league.png')})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'right',
+              height: '46px',
+            }"
+          ></div>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 <script>
+import { PAGES } from "../store/pager";
+
 export default {
-  mounted() {
-    this.containerAnime();
-  },
   methods: {
     containerAnime() {
       const animation = this.anime
@@ -49,19 +49,16 @@ export default {
         .add(
           {
             targets: "#intro-content",
-            keyframes: [
-              { translateX: "-100vw", duration: 0 },
-              { translateX: 0, duration: 400 },
-            ],
+            translateX: ["-100vw", "0"],
+            duration: 400,
             easing: "cubicBezier(0.000, 0.000, 0.000, 1.000)",
-            loop: false,
           },
           1000
         )
         .add(
           {
             targets: ".pl-name",
-            width: 0,
+            width: ["149px", "0"],
             duration: 400,
             easing: "cubicBezier(1.000, 0.000, 1.000, 1.000)",
           },
@@ -101,6 +98,8 @@ export default {
         );
       animation.finished.then(() => {
         console.log("intro animation is finished");
+        this.$store.dispatch("pager/goto", PAGES.PLAYGROUND);
+
       });
     },
   },
