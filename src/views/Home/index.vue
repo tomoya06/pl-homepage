@@ -1,22 +1,18 @@
 <template>
   <div id="homepage" class="pl-page-container">
     <Intro v-show="false" />
-    <Player v-if="showPlayer"/>
-    <Scoreboard v-show="false" />
-    <button @click="start" v-if="!showPlayer">PLAY!</button>
+    <Loader />
   </div>
 </template>
 
 <script>
-import Intro from "../components/Intro";
-import Scoreboard from "../components/Scoreboard";
-import Player from "../components/Player";
+import Intro from "../pages/Intro";
+import Loader from "../pages/Loader";
 
 export default {
   components: {
     Intro,
-    Scoreboard,
-    Player,
+    Loader,
   },
   data() {
     return {

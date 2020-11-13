@@ -1,5 +1,6 @@
 <template>
-  <div id="player-canvas" class="pl-page-container">
+  <div id="player-canvas" class="pl-page-container" v-show="showMe">
+    <Background />
     <div
       id="player-container"
       class="pl-page-component"
@@ -10,7 +11,7 @@
           <div
             class="icon"
             :style="{
-              backgroundImage: `url(${require('@/assets/img/pl-lion.png')})`,
+              backgroundImage: `url(${require('@/assets/img/yt_icon_rgb.png')})`,
               backgroundPosition: 'center center',
               backgroundRepeat: 'no-repeat',
             }"
@@ -60,8 +61,12 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
+import Background from '@/components/Background';
+import pagerMixin from '../../mixins/pager';
+import { PAGES } from '../../plugins/pager';
 
 export default {
+  mixins: [pagerMixin(PAGES.PLAYER)],
   mounted() {
     this.initPlayer(this.$refs.scPlayer).then(() => {
       this.playlistAnimate();
@@ -94,7 +99,7 @@ export default {
             easing: "cubicBezier(0, .8, 0, 1)",
             duration: 600,
           },
-          0
+          100
         )
         .add(
           {
@@ -127,6 +132,9 @@ export default {
       status: (state) => state.player.status,
     }),
   },
+  components: {
+    Background,
+  }
 };
 </script>
 <style lang="less" scoped>
@@ -164,7 +172,7 @@ export default {
       width: @iconWidth;
       height: @iconWidth;
       background-color: white;
-      background-size: @iconWidth - 4px, @iconWidth - 4px;
+      background-size: @iconWidth - 40px, @iconWidth - 40px;
     }
     .titles {
       margin: 0 0 0 @rowMargin;
