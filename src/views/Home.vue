@@ -1,32 +1,38 @@
 <template>
   <div id="homepage" class="pl-page-container">
-    <Intro v-show="false" />
-    <Player v-if="showPlayer"/>
-    <Scoreboard v-show="false" />
-    <button @click="start" v-if="!showPlayer">PLAY!</button>
+    <loading-view v-show="currentPage === PAGES.LOADING" />
+    <intro v-show="currentPage === PAGES.INTRO" />
+    <player v-show="currentPage === PAGES.PLAYER" />
+    <scoreboard v-show="currentPage === PAGES.PLAYGROUND" />
   </div>
 </template>
 
 <script>
-import Intro from "../components/Intro";
-import Scoreboard from "../components/Scoreboard";
-import Player from "../components/Player";
+import { mapState } from "vuex";
+
+import Intro from "../components/IntroBoard.vue";
+import Scoreboard from "../components/Scoreboard.vue";
+import Player from "../components/Player.vue";
+import LoadingView from "../components/LoadingView.vue";
+
+import { PAGES } from "../store/pager";
 
 export default {
   components: {
     Intro,
     Scoreboard,
     Player,
+    LoadingView,
   },
   data() {
     return {
-      showPlayer: false,
+      PAGES,
     };
   },
-  methods: {
-    start() {
-      this.showPlayer = true;
-    },
+  computed: {
+    ...mapState({
+      currentPage: (state) => state.pager.currentPage,
+    }),
   },
 };
 </script>

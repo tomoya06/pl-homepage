@@ -1,5 +1,5 @@
 <template>
-  <div id="intro-canvas" v-if="display" class="pl-page-component">
+  <div id="intro-canvas" class="pl-page-component">
     <div id="intro-container">
       <div id="intro-content">
         <div
@@ -39,11 +39,6 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      display: true,
-    };
-  },
   mounted() {
     this.containerAnime();
   },
@@ -106,7 +101,6 @@ export default {
         );
       animation.finished.then(() => {
         console.log("intro animation is finished");
-        this.display = false;
       });
     },
   },

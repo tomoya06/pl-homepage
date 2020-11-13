@@ -61,7 +61,7 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
-import Background from '@/components/Background';
+import Background from './BackgroundBoard.vue';
 
 export default {
   mounted() {
