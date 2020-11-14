@@ -99,7 +99,6 @@ export default {
       animation.finished.then(() => {
         console.log("intro animation is finished");
         this.$store.dispatch("pager/goto", PAGES.PLAYGROUND);
-
       });
     },
   },

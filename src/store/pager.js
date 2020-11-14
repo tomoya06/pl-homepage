@@ -1,6 +1,7 @@
 export const PAGES = {
   LOADING: 'loading',
   INTRO: 'intro',
+  IDENT: 'ident',
   PLAYGROUND: 'playground',
   PLAYER: 'player',
 }
@@ -8,7 +9,7 @@ export const PAGES = {
 const pageValues = Object.values(PAGES);
 
 const state = {
-  currentPage: PAGES.LOADING,
+  currentPage: PAGES.IDENT,
 }
 
 const mutations = {

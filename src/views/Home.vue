@@ -4,6 +4,7 @@
     <intro v-show="currentPage === PAGES.INTRO" />
     <player v-show="currentPage === PAGES.PLAYER" />
     <playground v-show="currentPage === PAGES.PLAYGROUND" />
+    <ident v-show="currentPage === PAGES.IDENT" />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Intro from "../pages/IntroBoard.vue";
 import Playground from "../pages/Playground.vue";
 import Player from "../pages/Player.vue";
 import LoadingView from "../pages/LoadingView.vue";
+import Ident from "../pages/Ident.vue";
 
 import { PAGES } from "../store/pager";
 
@@ -23,6 +25,7 @@ export default {
     Playground,
     Player,
     LoadingView,
+    Ident,
   },
   data() {
     return {

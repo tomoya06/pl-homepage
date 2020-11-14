@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: "type_dynamic_-_sailec-webfont";
 }
 @font-face {
   font-family: "type_dynamic_-_sailec_bold-webfont";
